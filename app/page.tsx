@@ -1,5 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
+import DepositForm from "./components/DepositForm";
+import WithdrawForm from "./components/WithdrawForm";
+import BorrowForm from "./components/BorrowForm";
+import RepayForm from "./components/RepayForm";
+import LiquidationPanel from "./components/LiquidationPanel";
+import InterestDisplay from "./components/InterestDisplay";
 
 export default function Home() {
   const [daiPrice, setDaiPrice] = useState<number | null>(null);
@@ -50,6 +56,21 @@ export default function Home() {
               </button>
             </div>
           ))}
+        </div>
+                {/* 功能表单区块 ✅ 实际可用功能：存款 / 提取 */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+          <DepositForm />
+          <WithdrawForm />
+        </div>
+        {/* 借贷 / 还款功能表单 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+          <BorrowForm />
+          <RepayForm />
+        </div>
+        {/* 利率信息和清算面板 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+          <InterestDisplay />
+          <LiquidationPanel />
         </div>
       </div>
     </div>
